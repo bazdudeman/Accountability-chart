@@ -1,0 +1,221 @@
+# Titan Fittings Accountability Chart
+#
+# Edit this file to change the chart. Save (commit) it on GitHub and the
+# website rebuilds itself within about a minute.
+#
+# Each seat has:
+#   id          short unique name, lowercase, no spaces (use dashes)
+#   seat        the seat title shown on the chart
+#   name        the person in the seat (leave "" for an open seat)
+#   reports_to  the id of the seat above it (leave out for the top seat)
+#   roles       up to five key roles
+#
+# To move a seat, change its reports_to. To add a seat, copy a block.
+# Seats appear left to right in the order they are listed here.
+
+company: Titan Fittings
+updated: 2026-11-10
+
+seats:
+  - id: visionary
+    seat: Visionary
+    name: ""
+    roles:
+      - 1, 3, 10-year vision
+      - Big ideas and innovation
+      - Top customer relationships
+      - Top vendor relationships
+      - Culture
+
+  - id: integrator
+    seat: Integrator
+    name: ""
+    reports_to: visionary
+    roles:
+      - Lead, manage, hold accountable
+      - Run L10, scorecard, rocks
+      - P&L and profitability
+      - Resolve cross-department issues
+      - Execute the business plan
+
+  # ---------- Sales ----------
+  - id: sales
+    seat: Sales
+    name: ""
+    reports_to: integrator
+    roles:
+      - Hit revenue plan
+      - Pipeline and new accounts
+      - Key account growth
+      - Pricing and margin
+      - CRM and forecasting
+
+  - id: csr
+    seat: Customer service (CSR)
+    name: ""
+    reports_to: sales
+    roles:
+      - Order entry accuracy
+      - Customer response time
+      - Issue and RMA resolution
+      - Quote support
+      - Customer retention
+
+  # ---------- Marketing ----------
+  - id: marketing
+    seat: Marketing
+    name: ""
+    reports_to: integrator
+    roles:
+      - Brand and messaging
+      - Website and e-commerce content
+      - Digital marketing and SEO
+      - Lead generation for sales
+      - Trade shows and product launches
+
+  # ---------- Operations ----------
+  - id: operations
+    seat: Operations
+    name: ""
+    reports_to: integrator
+    roles:
+      - Lead the operations team
+      - On-time delivery to customers
+      - Inventory turns, working capital
+      - Capacity and staffing
+      - Safety and facilities
+
+  - id: procurement
+    seat: Procurement
+    name: ""
+    reports_to: operations
+    roles:
+      - Domestic and international sourcing
+      - POs and open orders
+      - Vendor relationships and cost
+      - International logistics
+      - Supplier on-time delivery
+
+  - id: fulfillment
+    seat: Fulfillment
+    name: ""
+    reports_to: operations
+    roles:
+      - Pick, pack, and ship
+      - On-time shipments
+      - Shipping accuracy
+      - Carrier management
+      - Warehouse safety
+
+  - id: hose-shop
+    seat: Hose shop
+    name: ""
+    reports_to: operations
+    roles:
+      - Hose assembly production
+      - Scheduling and lead times
+      - Build sheets and workmanship
+      - Raw material coordination
+      - Training and safety
+
+  - id: inventory
+    seat: Inventory
+    name: ""
+    reports_to: operations
+    roles:
+      - Cycle counts and accuracy
+      - Bin locations
+      - Min/max and reorder points
+      - Slow-moving and obsolete stock
+      - Space utilization
+
+  # ---------- Quality ----------
+  - id: qc
+    seat: Quality control (QC)
+    name: ""
+    reports_to: integrator
+    roles:
+      - Quality system (ISO 9001)
+      - Inspection and release
+      - NCR, SCAR, corrective action
+      - Testing, PPAP, MTR review
+      - Calibration
+
+  - id: receiving
+    seat: Receiving
+    name: ""
+    reports_to: qc
+    roles:
+      - Receive and verify inbound
+      - Put-away and allocation
+      - Holds and nonconformance
+      - ERP receipt accuracy
+      - MTRs and documentation
+
+  # ---------- Engineering ----------
+  - id: engineering
+    seat: Engineering
+    name: ""
+    reports_to: integrator
+    roles:
+      - Drawings and specifications
+      - New product development
+      - Customer technical support
+      - Supplier technical standards
+      - ECN and document control
+
+  # ---------- Admin ----------
+  - id: admin
+    seat: Admin
+    name: ""
+    reports_to: integrator
+    roles:
+      - Office administration
+      - Reception and front office
+      - Insurance and contracts
+      - Company policies
+      - Oversee finance, HR, training, IT
+
+  - id: finance
+    seat: Finance
+    name: ""
+    reports_to: admin
+    roles:
+      - Accounting and month-end close
+      - AP, AR, and collections
+      - Cash flow and budget
+      - Financial reporting
+      - Controls and audit
+
+  - id: hr
+    seat: HR
+    name: ""
+    reports_to: admin
+    roles:
+      - Recruiting and onboarding
+      - Payroll and benefits
+      - Compliance
+      - Reviews and People Analyzer
+      - Retention and culture
+
+  - id: training
+    seat: Training
+    name: ""
+    reports_to: admin
+    roles:
+      - New-hire training program
+      - Job skills and cross-training
+      - Safety training (OSHA)
+      - Training records and certifications
+      - Leadership development
+
+  - id: it
+    seat: IT
+    name: ""
+    reports_to: admin
+    roles:
+      - ERP administration and support
+      - Network, hardware, and phones
+      - Cybersecurity and backups
+      - User accounts and access
+      - Software and integrations
