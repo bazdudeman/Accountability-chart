@@ -90,7 +90,7 @@ seats:
   - id: procurement
     seat: Procurement
     name: ""
-    reports_to: operations
+    reports_to: integrator
     roles:
       - Domestic and international sourcing
       - POs and open orders
