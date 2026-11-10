@@ -130,7 +130,17 @@ seats:
       - Min/max and reorder points
       - Slow-moving and obsolete stock
       - Space utilization
-
+# ---------- Procurement ----------
+- id: procurement
+    seat: Procurement
+    name: ""
+    reports_to: integrator
+    roles:
+      - Domestic and international sourcing
+      - POs and open orders
+      - Vendor relationships and cost
+      - International logistics
+      - Supplier on-time delivery
   # ---------- Quality ----------
   - id: qc
     seat: Quality control (QC)
