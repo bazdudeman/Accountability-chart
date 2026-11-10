@@ -65,8 +65,19 @@
     padding: 6px 12px;
     cursor: pointer;
   }
-  button:hover { border-color: var(--line); }
-  button:focus-visible { outline: 2px solid var(--steel); outline-offset: 2px; }
+  button:hover, select:hover { border-color: var(--line); }
+  button:focus-visible, select:focus-visible { outline: 2px solid var(--steel); outline-offset: 2px; }
+  select {
+    font: inherit;
+    color: var(--ink);
+    background: var(--card);
+    border: 1px solid var(--edge);
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+  }
+  .picker[hidden] { display: none; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
   #errors {
     margin: 12px 28px 0;
@@ -176,9 +187,13 @@
 <header>
   <div>
     <h1 id="title">Accountability chart</h1>
-    <p class="sub" id="sub">Loading chart.yaml</p>
+    <p class="sub" id="sub">Loading chart</p>
   </div>
   <div class="tools">
+    <label class="picker" id="picker" hidden>
+      <span class="sr-only">Chart version</span>
+      <select id="version"></select>
+    </label>
     <button type="button" id="toggle-roles" aria-pressed="true">Hide roles</button>
     <button type="button" onclick="window.print()">Print or save PDF</button>
   </div>
@@ -290,7 +305,7 @@
     document.getElementById("sub").textContent = updated ? "Updated " + updated : "";
 
     const problems = check(seats);
-    if (problems.length) showErrors("Fix these in chart.yaml:", problems);
+    if (problems.length) showErrors("Fix these in " + fileName + ":", problems);
 
     const kids = {};
     const roots = [];
@@ -306,16 +321,55 @@
     chartEl.appendChild(top);
   }
 
-  fetch("chart.yaml", { cache: "no-store" })
+  // Which version to show: index.html?v=chart-2027-draft loads chart-2027-draft.yaml
+  const requested = new URLSearchParams(location.search).get("v") || "chart";
+  const current = /^[A-Za-z0-9_-]+$/.test(requested) ? requested : "chart";
+  const fileName = current + ".yaml";
+
+  // Optional menu of versions, listed in versions.yaml
+  fetch("versions.yaml", { cache: "no-store" })
+    .then(function (res) { return res.ok ? res.text() : null; })
+    .then(function (text) {
+      if (!text) return;
+      const list = ((jsyaml.load(text) || {}).versions || []).filter(function (v) {
+        return v && v.file && /^[A-Za-z0-9_-]+$/.test(v.file);
+      });
+      if (!list.length) return;
+      const select = document.getElementById("version");
+      list.forEach(function (v) {
+        const opt = document.createElement("option");
+        opt.value = v.file;
+        opt.textContent = v.label || v.file;
+        if (v.file === current) opt.selected = true;
+        select.appendChild(opt);
+      });
+      if (!list.some(function (v) { return v.file === current; })) {
+        const opt = document.createElement("option");
+        opt.value = current;
+        opt.textContent = current;
+        opt.selected = true;
+        select.appendChild(opt);
+      }
+      select.addEventListener("change", function () {
+        const url = new URL(location.href);
+        if (select.value === "chart") url.searchParams.delete("v");
+        else url.searchParams.set("v", select.value);
+        location.href = url.toString();
+      });
+      document.getElementById("picker").hidden = false;
+    })
+    .catch(function () { /* the menu is optional */ });
+
+  fetch(fileName, { cache: "no-store" })
     .then(function (res) {
-      if (!res.ok) throw new Error("chart.yaml was not found next to index.html (HTTP " + res.status + ").");
+      if (!res.ok) throw new Error(fileName + " was not found next to index.html (HTTP " + res.status + ").");
       return res.text();
     })
     .then(function (text) {
       let data;
       try { data = jsyaml.load(text); }
       catch (e) {
-        showErrors("chart.yaml has a formatting problem. Check indentation near line " +
+        showErrors(fileName + " has a formatting problem. Check indentation near line " +
           (e.mark ? e.mark.line + 1 : "?") + ".", [e.reason || e.message]);
         return;
       }

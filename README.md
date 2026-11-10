@@ -37,6 +37,29 @@ Spacing matters in YAML: keep the same indentation as the blocks around your
 change. If something is wrong, the chart page shows a red box naming the
 problem, such as a `reports_to` that points to a seat that doesn't exist.
 
+## Multiple versions
+
+One page can show several charts, such as the current chart, a draft, or a
+second company. Each version is its own YAML file, and a menu at the top of the
+page switches between them.
+
+1. Open `chart.yaml`, click the copy icon to copy its contents, then click
+   **Add file > Create new file**. Name it, for example `tam.yaml`, paste, and
+   change `company:` and the seats. Commit.
+2. Open `versions.yaml`, click the pencil, and add an entry:
+
+   ```yaml
+     - file: tam
+       label: Titan Advanced Manufacturing
+   ```
+
+   Commit.
+3. The menu now lists the new version. Each version also has its own link,
+   such as `.../accountability-chart/?v=tam`, which you can bookmark or share.
+
+File names can use letters, numbers, dashes and underscores only. `chart.yaml`
+is the version shown when no `?v=` is in the link.
+
 ## How the layout works
 
 - Seats appear left to right in the order they are listed in `chart.yaml`.

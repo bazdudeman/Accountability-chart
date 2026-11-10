@@ -1,0 +1,9 @@
+# The version menu on the chart page.
+# Each entry points to a YAML file in this folder (leave off ".yaml").
+# To add a version: copy chart.yaml to a new file, then add it here.
+
+versions:
+  - file: chart
+    label: Current chart
+  - file: chart-2027-draft
+    label: 2027 draft
