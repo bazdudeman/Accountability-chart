@@ -128,6 +128,7 @@ seats:
       - Min/max and reorder points
       - Slow-moving and obsolete stock
       - Space utilization
+
 # ---------- Procurement ----------
 - id: procurement
     seat: Procurement
