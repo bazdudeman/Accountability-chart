@@ -1,3 +1,5 @@
+     - file: tam
+       label: Titan Advanced Manufacturing
 # Titan Fittings Accountability Chart
 #
 # Edit this file to change the chart. Save (commit) it on GitHub and the
@@ -85,6 +87,17 @@ seats:
       - Capacity and staffing
       - Safety and facilities
 
+  - id: procurement
+    seat: Procurement
+    name: ""
+    reports_to: operations
+    roles:
+      - Domestic and international sourcing
+      - POs and open orders
+      - Vendor relationships and cost
+      - International logistics
+      - Supplier on-time delivery
+
   - id: fulfillment
     seat: Fulfillment
     name: ""
@@ -117,18 +130,6 @@ seats:
       - Min/max and reorder points
       - Slow-moving and obsolete stock
       - Space utilization
-
-  # ---------- Procurement ----------
-  - id: procurement
-    seat: Procurement
-    name: ""
-    reports_to: integrator
-    roles:
-      - Domestic and international sourcing
-      - POs and open orders
-      - Vendor relationships and cost
-      - International logistics
-      - Supplier on-time delivery
 
   # ---------- Quality ----------
   - id: qc
