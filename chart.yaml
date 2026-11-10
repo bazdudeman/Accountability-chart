@@ -1,5 +1,4 @@
-     - file: tam
-       label: Titan Advanced Manufacturing
+
 # Titan Fittings Accountability Chart
 #
 # Edit this file to change the chart. Save (commit) it on GitHub and the
@@ -15,6 +14,10 @@
 # To move a seat, change its reports_to. To add a seat, copy a block.
 # Seats appear left to right in the order they are listed here.
 
+
+     - file: tam
+       label: Titan Advanced Manufacturing
+       
 company: Titan Fittings
 updated: 2026-11-10
 
