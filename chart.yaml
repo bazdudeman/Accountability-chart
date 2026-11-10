@@ -85,17 +85,6 @@ seats:
       - Capacity and staffing
       - Safety and facilities
 
-  - id: procurement
-    seat: Procurement
-    name: ""
-    reports_to: operations
-    roles:
-      - Domestic and international sourcing
-      - POs and open orders
-      - Vendor relationships and cost
-      - International logistics
-      - Supplier on-time delivery
-
   - id: fulfillment
     seat: Fulfillment
     name: ""
@@ -129,8 +118,8 @@ seats:
       - Slow-moving and obsolete stock
       - Space utilization
 
-# ---------- Procurement ----------
-- id: procurement
+  # ---------- Procurement ----------
+  - id: procurement
     seat: Procurement
     name: ""
     reports_to: integrator
@@ -140,6 +129,7 @@ seats:
       - Vendor relationships and cost
       - International logistics
       - Supplier on-time delivery
+
   # ---------- Quality ----------
   - id: qc
     seat: Quality control (QC)
